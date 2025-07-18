@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TruthTube - YouTube Link Verification</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <h1 class="logo">TruthTube</h1>
+                <div class="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#verify">Verify Link</a>
+                    <a href="#about">About</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <h1 class="hero-title">Fighting the Social Media Crisis</h1>
+                <p class="hero-subtitle">Verify YouTube links instantly and protect yourself from misinformation</p>
+                <a href="#verify" class="cta-button">Start Verifying</a>
+            </div>
+        </section>
+
+        <section id="crisis" class="crisis-section">
+            <div class="container">
+                <h2>The Social Media Crisis: A Human Impact</h2>
+                <div class="crisis-grid">
+                    <div class="crisis-card">
+                        <h3>Misinformation Spreads Faster</h3>
+                        <p>False information travels 6 times faster than truth on social platforms, reaching millions before fact-checkers can respond.</p>
+                    </div>
+                    <div class="crisis-card">
+                        <h3>Mental Health Impact</h3>
+                        <p>Constant exposure to fake news and manipulated content increases anxiety, depression, and social isolation among users.</p>
+                    </div>
+                    <div class="crisis-card">
+                        <h3>Eroded Trust</h3>
+                        <p>People struggle to distinguish between authentic and fabricated content, leading to widespread skepticism and polarization.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="impact" class="impact-section">
+            <div class="container">
+                <h2>Real Lives, Real Consequences</h2>
+                <div class="impact-content">
+                    <div class="impact-text">
+                        <p>Behind every fake link and manipulated video are real people whose lives are affected:</p>
+                        <ul>
+                            <li><strong>Students</strong> making decisions based on false educational content</li>
+                            <li><strong>Parents</strong> sharing harmful misinformation about health and safety</li>
+                            <li><strong>Elderly</strong> falling victim to sophisticated scams and fake news</li>
+                            <li><strong>Communities</strong> divided by artificially amplified conflicts</li>
+                        </ul>
+                        <p>Every verified link is a step toward rebuilding trust in digital spaces and protecting vulnerable users from harm.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="verify" class="verify-section">
+            <div class="container">
+                <h2>Verify a YouTube Link</h2>
+                <div class="verify-form">
+                    <input type="url" id="youtube-url" placeholder="Paste YouTube link here..." class="url-input">
+                    <button onclick="verifyLink()" class="verify-button">Verify Link</button>
+                </div>
+                <div id="result" class="result-container"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 TruthTube. Fighting misinformation, one link at a time.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navigation */
+.navbar {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #87ceeb;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
+    color: white;
+    padding: 6rem 0;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.cta-button {
+    display: inline-block;
+    background: white;
+    color: #1e3c72;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Crisis Section */
+.crisis-section {
+    padding: 5rem 0;
+    background: white;
+}
+
+.crisis-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #1e3c72;
+}
+
+.crisis-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.crisis-card {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 10px;
+    border-left: 4px solid #2a5298;
+    transition: transform 0.3s ease;
+}
+
+.crisis-card:hover {
+    transform: translateY(-5px);
+}
+
+.crisis-card h3 {
+    color: #1e3c72;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.crisis-card p {
+    color: #666;
+    line-height: 1.7;
+}
+
+/* Impact Section */
+.impact-section {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+}
+
+.impact-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #1e3c72;
+}
+
+.impact-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.impact-text p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.impact-text ul {
+    margin: 2rem 0;
+    padding-left: 2rem;
+}
+
+.impact-text li {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.impact-text strong {
+    color: #1e3c72;
+}
+
+/* Verify Section */
+.verify-section {
+    padding: 5rem 0;
+    background: white;
+}
+
+.verify-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #1e3c72;
+}
+
+.verify-form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.url-input {
+    flex: 1;
+    padding: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.url-input:focus {
+    outline: none;
+    border-color: #2a5298;
+}
+
+.verify-button {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.verify-button:hover {
+    transform: translateY(-2px);
+}
+
+.result-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    display: none;
+}
+
+.result-real {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.result-fake {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Footer */
+footer {
+    background: #1e3c72;
+    color: white;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .verify-form {
+        flex-direction: column;
+    }
+    
+    .crisis-grid {
+        grid-template-columns: 1fr;
+    }
+}
+function verifyLink() {
+    const urlInput = document.getElementById('youtube-url');
+    const resultContainer = document.getElementById('result');
+    const url = urlInput.value.trim();
+    
+    // Clear previous results
+    resultContainer.style.display = 'none';
+    resultContainer.className = 'result-container';
+    
+    if (!url) {
+        showResult('Please enter a YouTube URL', 'fake');
+        return;
+    }
+    
+    // Basic YouTube URL validation
+    const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+/;
+    
+    if (!youtubeRegex.test(url)) {
+        showResult('This is not a valid YouTube URL', 'fake');
+        return;
+    }
+    
+    // Simulate verification process (placeholder for now)
+    showResult('Analyzing link...', 'analyzing');
+    
+    setTimeout(() => {
+        // For demo purposes, randomly determine if link is real or fake
+        // In a real app, this would connect to actual verification APIs
+        const isReal = Math.random() > 0.3; // 70% chance of being real for demo
+        
+        if (isReal) {
+            showResult('✅ This appears to be a legitimate YouTube link', 'real');
+        } else {
+            showResult('⚠️ Warning: This link may be suspicious or fake', 'fake');
+        }
+    }, 2000);
+}
+
+function showResult(message, type) {
+    const resultContainer = document.getElementById('result');
+    resultContainer.textContent = message;
+    resultContainer.className = `result-container result-${type}`;
+    resultContainer.style.display = 'block';
+}
+
+// Add enter key support for the input field
+document.getElementById('youtube-url').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        verifyLink();
+    }
+});
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
